@@ -45,7 +45,7 @@ from apispec.ext.marshmallow import MarshmallowPlugin
 from deprecation import deprecated
 from flask import current_app, g, url_for
 from flask_appbuilder.security.sqla.models import User
-from flask_babel import gettext as __, lazy_gettext as _
+from flask_babel import lazy_gettext as _
 from marshmallow import fields, Schema
 from marshmallow.validate import Range
 from sqlalchemy import column, select, types
@@ -109,25 +109,25 @@ class TimeGrain(NamedTuple):
 
 
 builtin_time_grains: dict[str | None, str] = {
-    TimeGrainConstants.SECOND: __("Second"),
-    TimeGrainConstants.FIVE_SECONDS: __("5 second"),
-    TimeGrainConstants.THIRTY_SECONDS: __("30 second"),
-    TimeGrainConstants.MINUTE: __("Minute"),
-    TimeGrainConstants.FIVE_MINUTES: __("5 minute"),
-    TimeGrainConstants.TEN_MINUTES: __("10 minute"),
-    TimeGrainConstants.FIFTEEN_MINUTES: __("15 minute"),
-    TimeGrainConstants.THIRTY_MINUTES: __("30 minute"),
-    TimeGrainConstants.HOUR: __("Hour"),
-    TimeGrainConstants.SIX_HOURS: __("6 hour"),
-    TimeGrainConstants.DAY: __("Day"),
-    TimeGrainConstants.WEEK: __("Week"),
-    TimeGrainConstants.MONTH: __("Month"),
-    TimeGrainConstants.QUARTER: __("Quarter"),
-    TimeGrainConstants.YEAR: __("Year"),
-    TimeGrainConstants.WEEK_STARTING_SUNDAY: __("Week starting Sunday"),
-    TimeGrainConstants.WEEK_STARTING_MONDAY: __("Week starting Monday"),
-    TimeGrainConstants.WEEK_ENDING_SATURDAY: __("Week ending Saturday"),
-    TimeGrainConstants.WEEK_ENDING_SUNDAY: __("Week ending Sunday"),
+    TimeGrainConstants.SECOND: _("Second"),
+    TimeGrainConstants.FIVE_SECONDS: _("5 second"),
+    TimeGrainConstants.THIRTY_SECONDS: _("30 second"),
+    TimeGrainConstants.MINUTE: _("Minute"),
+    TimeGrainConstants.FIVE_MINUTES: _("5 minute"),
+    TimeGrainConstants.TEN_MINUTES: _("10 minute"),
+    TimeGrainConstants.FIFTEEN_MINUTES: _("15 minute"),
+    TimeGrainConstants.THIRTY_MINUTES: _("30 minute"),
+    TimeGrainConstants.HOUR: _("Hour"),
+    TimeGrainConstants.SIX_HOURS: _("6 hour"),
+    TimeGrainConstants.DAY: _("Day"),
+    TimeGrainConstants.WEEK: _("Week"),
+    TimeGrainConstants.MONTH: _("Month"),
+    TimeGrainConstants.QUARTER: _("Quarter"),
+    TimeGrainConstants.YEAR: _("Year"),
+    TimeGrainConstants.WEEK_STARTING_SUNDAY: _("Week starting Sunday"),
+    TimeGrainConstants.WEEK_STARTING_MONDAY: _("Week starting Monday"),
+    TimeGrainConstants.WEEK_ENDING_SATURDAY: _("Week ending Saturday"),
+    TimeGrainConstants.WEEK_ENDING_SUNDAY: _("Week ending Sunday"),
 }
 
 
@@ -2219,32 +2219,32 @@ class BaseEngineSpec:  # pylint: disable=too-many-public-methods
 # full SQLAlchemy URI
 class BasicParametersSchema(Schema):
     username = fields.String(
-        required=True, allow_none=True, metadata={"description": __("Username")}
+        required=True, allow_none=True, metadata={"description": _("Username")}
     )
-    password = fields.String(allow_none=True, metadata={"description": __("Password")})
+    password = fields.String(allow_none=True, metadata={"description": _("Password")})
     host = fields.String(
-        required=True, metadata={"description": __("Hostname or IP address")}
+        required=True, metadata={"description": _("Hostname or IP address")}
     )
     port = fields.Integer(
         required=True,
-        metadata={"description": __("Database port")},
+        metadata={"description": _("Database port")},
         validate=Range(min=0, max=2**16, max_inclusive=False),
     )
     database = fields.String(
-        required=True, metadata={"description": __("Database name")}
+        required=True, metadata={"description": _("Database name")}
     )
     query = fields.Dict(
         keys=fields.Str(),
         values=fields.Raw(),
-        metadata={"description": __("Additional parameters")},
+        metadata={"description": _("Additional parameters")},
     )
     encryption = fields.Boolean(
         required=False,
-        metadata={"description": __("Use an encrypted connection to the database")},
+        metadata={"description": _("Use an encrypted connection to the database")},
     )
     ssh = fields.Boolean(
         required=False,
-        metadata={"description": __("Use an ssh tunnel connection to the database")},
+        metadata={"description": _("Use an ssh tunnel connection to the database")},
     )
 
 
